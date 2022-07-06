@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
-
+import { todoContext as TodoContext } from "../context/todos.context";
 const Todo = ({
   todo,
   id,
@@ -10,25 +10,22 @@ const Todo = ({
   UpdateTodo,
 }) => {
   const [isEditing, SetIsEditing] = useState(false);
+  const TodoData = useContext(TodoContext);
   return (
     <div className="flex justify-between items-center w-[20rem]" key={id}>
       {isEditing ? (
-        <EditTodoForm
-          UpdateTodo={UpdateTodo}
-          id={id}
-          todo={todo}
-          SetIsEditing={SetIsEditing}
-        />
+        <EditTodoForm id={id} todo={todo} SetIsEditing={SetIsEditing} />
       ) : (
         <>
           <span
             className={`${completed ? "line-through" : ""}`}
-            onClick={() => TodoToggle(id)}
+            onClick={() => TodoData.TodoToggle(id)}
+            key={Math.random()}
           >
             {todo}
           </span>
           <div>
-            <button onClick={() => DeleteFunction(id)}>
+            <button onClick={() => TodoData.DeleteFunction(id)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-4 md:h-8 w-6"

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import TodoForm from "../components/TodoForm";
 import TodosList from "../components/TodosList";
+import { todoContext as TodoContext } from "../context/todos.context";
 
 const Mainpage = () => {
   const initialTodo = [
@@ -46,17 +48,28 @@ const Mainpage = () => {
     SetTodos(updateTodo);
   };
   return (
-    <div className="w-full min-h-screen flex flex-col  bg-gradient-to-br to-yellow-300 from-green-500">
-      <Header />
-      <div className="flex flex-col justify-center items-center">
-        <TodoForm SubmitFunction={SubmitFunction} />
-      </div>
-      <TodosList
-        Todos={Todos}
-        DeleteFunction={DeleteFunction}
-        TodoToggle={TodoToggle}
-        UpdateTodo={UpdateTodo}
-      />
+    <div className="w-full h-screen md:h-full flex flex-col  bg-gradient-to-br to-yellow-300 from-green-500">
+      <TodoContext.Provider
+        value={{
+          Todos: Todos,
+          SubmitFunction: SubmitFunction,
+          DeleteFunction: DeleteFunction,
+          TodoToggle: TodoToggle,
+          UpdateTodo: UpdateTodo,
+        }}
+      >
+        <Header />
+        <div className="flex flex-col justify-center items-center">
+          <TodoForm />
+        </div>
+        <TodosList
+          Todos={Todos}
+          DeleteFunction={DeleteFunction}
+          TodoToggle={TodoToggle}
+          UpdateTodo={UpdateTodo}
+        />
+        <Footer />
+      </TodoContext.Provider>
     </div>
   );
 };

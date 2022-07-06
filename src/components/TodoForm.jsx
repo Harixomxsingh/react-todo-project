@@ -1,16 +1,15 @@
-import React, { useId, useState } from "react";
+import React, { useContext, useId, useState } from "react";
 import Tilt from "react-parallax-tilt";
 import { v4 as uuid } from "uuid";
-
-const TodoForm = ({ SubmitFunction }) => {
+import { todoContext as TodoContext } from "../context/todos.context";
+const TodoForm = () => {
   const [inputText, setInputText] = useState("");
-  const [notEdit, setNotEdit] = useState(false);
+  const TodoData = useContext(TodoContext);
   const lid = useId();
   const Fid = uuid();
-  const isEditIsOn = (e) => {};
   const handleSubmit = (e) => {
     e.preventDefault();
-    SubmitFunction(Fid, inputText, false);
+    TodoData.SubmitFunction(Fid, inputText, false);
     setInputText("");
   };
   return (

@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { todoContext as TodoContext } from "../context/todos.context";
 
-const EditTodoForm = ({ UpdateTodo, id, todo, SetIsEditing }) => {
+const EditTodoForm = ({ id, todo, SetIsEditing }) => {
   const [value, setValue] = useState(todo);
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     UpdateTodo(id, value);
-  //     setValue("");
-  //     SetIsEditing(false);
-  //   };
+  const TodoData = useContext(TodoContext);
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        UpdateTodo(id, value);
+        TodoData.UpdateTodo(id, value);
         setValue("");
         SetIsEditing(false);
       }}
