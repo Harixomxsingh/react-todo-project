@@ -19,9 +19,11 @@ const Footer = () => {
         />
       </svg>{" "}
       by
-      <a href="https://www.twitter.com/harixom" target="__blank">
-        Hari om Singh
-      </a>
+      <div>
+        <a href="https://www.github.com/harixomxsingh" target="__blank">
+          Hari om Singh
+        </a>
+      </div>
     </div>
   );
 };
