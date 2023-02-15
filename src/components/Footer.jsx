@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="sticky bottom-0 mt-auto bg-opacity-30 backdrop:filter backdrop-blur-sm  w-full h-9 flex justify-center items-center bg-slate-400 ">
+    <div className="sticky bottom-0 space-x-1 mt-auto bg-opacity-30 backdrop:filter backdrop-blur-sm  w-full h-9 flex justify-center items-center bg-slate-400 ">
       made with
       <svg
         xmlns="http://www.w3.org/2000/svg"

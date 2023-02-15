@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {  useContext } from "react";
 import Todo from "./Todo";
 import { v4 as uuid } from "uuid";
 import { todoContext as TodoContext } from "../context/todos.context";
